@@ -86,7 +86,7 @@ function Dashboard() {
                   </div>
                   <Icon className={`h-4 w-4 ${isPrimary ? "" : c.color}`} />
                 </div>
-                <div className="text-xl md:text-2xl font-bold font-display">{fmt(c.value)}</div>
+                <div className="text-xl md:text-2xl font-bold font-display"><Money value={c.value} /></div>
                 <div className={`text-[11px] mt-1 ${isPrimary ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
                   {c.delta} {t.vsLastMonth}
                 </div>
@@ -170,7 +170,7 @@ function Dashboard() {
                   </div>
                 </div>
                 <div className={`text-sm font-semibold ${tx.type === "income" ? "text-success" : "text-foreground"}`}>
-                  {tx.type === "income" ? "+" : "−"}{fmt(tx.amount)}
+                  {tx.type === "income" ? "+" : "−"}<Money value={tx.amount} />
                 </div>
               </div>
             ))}
