@@ -5,6 +5,7 @@ import { AddTransactionDialog } from "@/components/AddTransactionDialog";
 import { useStore } from "@/store/app-store";
 import { getDict } from "@/lib/i18n";
 import { ArrowDownRight, ArrowUpRight, TrendingUp, Wallet, PiggyBank } from "lucide-react";
+import { Money } from "@/components/Money";
 import { motion } from "framer-motion";
 import {
   AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, YAxis, PieChart as RPieChart, Pie, Cell,
