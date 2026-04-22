@@ -4,8 +4,9 @@ import { Topbar } from "@/components/Topbar";
 import { AddTransactionDialog } from "@/components/AddTransactionDialog";
 import { useStore, store } from "@/store/app-store";
 import { getDict } from "@/lib/i18n";
-import { ArrowDownRight, ArrowUpRight, Trash2 } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Trash2, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Money } from "@/components/Money";
 
 export const Route = createFileRoute("/app/transactions")({
   component: Page,
@@ -13,10 +14,10 @@ export const Route = createFileRoute("/app/transactions")({
 });
 
 function Page() {
-  const { lang, transactions } = useStore();
+  const { lang, transactions, cards } = useStore();
   const t = getDict(lang);
   const [open, setOpen] = useState(false);
-  const fmt = (n: number) => new Intl.NumberFormat(lang === "pt" ? "pt-BR" : lang, { style: "currency", currency: lang === "pt" ? "BRL" : "USD" }).format(n);
+  const cardName = (id?: string) => cards.find((c) => c.id === id)?.nickname;
 
   return (
     <>
@@ -36,12 +37,19 @@ function Page() {
                   </div>
                   <div>
                     <div className="font-medium">{tx.description}</div>
-                    <div className="text-xs text-muted-foreground">{t[tx.category]} · {tx.date}</div>
+                    <div className="text-xs text-muted-foreground flex items-center gap-1.5">
+                      {t[tx.category]} · {tx.date}
+                      {tx.cardId && cardName(tx.cardId) && (
+                        <span className="inline-flex items-center gap-1 rounded-md bg-primary/10 px-1.5 py-0.5 text-primary">
+                          <CreditCard className="h-3 w-3" /> {cardName(tx.cardId)}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className={`font-semibold ${tx.type === "income" ? "text-success" : ""}`}>
-                    {tx.type === "income" ? "+" : "−"}{fmt(tx.amount)}
+                    {tx.type === "income" ? "+" : "−"}<Money value={tx.amount} />
                   </div>
                   <Button variant="ghost" size="icon" onClick={() => store.removeTransaction(tx.id)}>
                     <Trash2 className="h-4 w-4 text-muted-foreground" />
