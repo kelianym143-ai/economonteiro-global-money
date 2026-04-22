@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Lang } from "@/lib/i18n";
+import { obfuscate, deobfuscate } from "@/lib/security";
 
 export type TxType = "income" | "expense";
 export type Category = "food" | "transport" | "shopping" | "bills" | "entertainment" | "salary" | "other";
@@ -11,6 +12,34 @@ export type Transaction = {
   type: TxType;
   category: Category;
   date: string;
+  cardId?: string; // optional link to a credit card
+};
+
+export type CardBrand = "visa" | "mastercard" | "amex" | "elo" | "other";
+
+// Internal storage shape — number is obfuscated last4 + obfuscated holder
+export type CreditCard = {
+  id: string;
+  nickname: string;
+  brand: CardBrand;
+  last4: string;       // last 4 digits in clear (safe to display)
+  holderEnc: string;   // obfuscated holder name
+  limit: number;       // credit limit
+  closingDay: number;  // 1-28
+  dueDay: number;      // 1-28
+  color: string;       // gradient class
+};
+
+// Input used when creating — full card number is taken in but NEVER persisted
+export type CreditCardInput = {
+  nickname: string;
+  brand: CardBrand;
+  fullNumber: string;  // full PAN — used only to derive last4, then discarded
+  holder: string;
+  limit: number;
+  closingDay: number;
+  dueDay: number;
+  color: string;
 };
 
 const seed: Transaction[] = [
@@ -31,6 +60,8 @@ let state = {
   lang: "pt" as Lang,
   theme: "light" as "light" | "dark",
   transactions: seed,
+  cards: [] as CreditCard[],
+  privacyMode: false, // when true, hides all amounts
 };
 
 if (typeof window !== "undefined") {
@@ -59,6 +90,7 @@ export const store = {
   get: () => state,
   setLang: (lang: Lang) => { state = { ...state, lang }; notify(); },
   setTheme: (theme: "light" | "dark") => { state = { ...state, theme }; notify(); },
+  togglePrivacy: () => { state = { ...state, privacyMode: !state.privacyMode }; notify(); },
   addTransaction: (tx: Omit<Transaction, "id">) => {
     state = { ...state, transactions: [{ ...tx, id: crypto.randomUUID() }, ...state.transactions] };
     notify();
@@ -66,6 +98,34 @@ export const store = {
   removeTransaction: (id: string) => {
     state = { ...state, transactions: state.transactions.filter((t) => t.id !== id) };
     notify();
+  },
+  addCard: (input: CreditCardInput) => {
+    const digits = input.fullNumber.replace(/\D/g, "");
+    const card: CreditCard = {
+      id: crypto.randomUUID(),
+      nickname: input.nickname,
+      brand: input.brand,
+      last4: digits.slice(-4),
+      holderEnc: obfuscate(input.holder),
+      limit: input.limit,
+      closingDay: input.closingDay,
+      dueDay: input.dueDay,
+      color: input.color,
+    };
+    state = { ...state, cards: [card, ...state.cards] };
+    notify();
+  },
+  removeCard: (id: string) => {
+    state = {
+      ...state,
+      cards: state.cards.filter((c) => c.id !== id),
+      transactions: state.transactions.map((t) => (t.cardId === id ? { ...t, cardId: undefined } : t)),
+    };
+    notify();
+  },
+  getCardHolder: (id: string): string => {
+    const c = state.cards.find((x) => x.id === id);
+    return c ? deobfuscate(c.holderEnc) : "";
   },
 };
 
