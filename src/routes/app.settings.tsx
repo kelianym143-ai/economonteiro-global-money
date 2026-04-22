@@ -46,6 +46,31 @@ function Page() {
             </Button>
           </div>
         </div>
+
+        <div className="rounded-2xl bg-card border border-border p-6 shadow-soft space-y-3">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <h2 className="font-display font-semibold flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-success" />
+                {t.privacyMode}
+              </h2>
+              <p className="text-xs text-muted-foreground mt-1">{t.privacyModeDesc}</p>
+            </div>
+            <Button
+              variant={privacyMode ? "default" : "outline"}
+              size="sm"
+              onClick={() => store.togglePrivacy()}
+              className={privacyMode ? "bg-gradient-primary" : ""}
+            >
+              {privacyMode ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </Button>
+          </div>
+        </div>
+
+        <div className="rounded-2xl bg-success/5 border border-success/20 p-4 flex gap-3">
+          <ShieldCheck className="h-5 w-5 text-success shrink-0 mt-0.5" />
+          <p className="text-xs text-foreground/80 leading-relaxed">{t.securityNote}</p>
+        </div>
       </main>
     </>
   );
