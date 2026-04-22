@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, BarChart3, Sparkles, Wallet, Globe2, ShieldCheck, TrendingUp } from "lucide-react";
+import { ArrowRight, BarChart3, Sparkles, Globe2, ShieldCheck, TrendingUp } from "lucide-react";
 import { useStore } from "@/store/app-store";
 import { getDict } from "@/lib/i18n";
 import { LangSwitcher } from "@/components/LangSwitcher";
+import { Logo } from "@/components/Logo";
 
 export const Route = createFileRoute("/")({
   component: Landing,
