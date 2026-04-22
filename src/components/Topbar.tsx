@@ -1,15 +1,19 @@
-import { Moon, Sun, Plus } from "lucide-react";
+import { Moon, Sun, Plus, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LangSwitcher } from "./LangSwitcher";
+import { Logo } from "./Logo";
 import { store, useStore } from "@/store/app-store";
 import { getDict } from "@/lib/i18n";
 
 export function Topbar({ onAdd }: { onAdd?: () => void }) {
-  const { lang, theme } = useStore();
+  const { lang, theme, privacyMode } = useStore();
   const t = getDict(lang);
   return (
     <header className="sticky top-0 z-30 flex items-center justify-between gap-3 border-b border-border bg-background/80 backdrop-blur-xl px-4 md:px-8 py-3">
-      <div className="md:hidden font-display text-lg font-bold">{t.appName}</div>
+      <div className="md:hidden flex items-center gap-2">
+        <Logo size={28} />
+        <span className="font-display text-lg font-bold">{t.appName}</span>
+      </div>
       <div className="hidden md:block" />
       <div className="flex items-center gap-2">
         {onAdd && (
@@ -18,6 +22,14 @@ export function Topbar({ onAdd }: { onAdd?: () => void }) {
             <span className="hidden sm:inline">{t.addTransaction}</span>
           </Button>
         )}
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => store.togglePrivacy()}
+          title={t.privacyMode}
+        >
+          {privacyMode ? <EyeOff className="h-4 w-4 text-primary" /> : <Eye className="h-4 w-4" />}
+        </Button>
         <LangSwitcher />
         <Button
           variant="outline"

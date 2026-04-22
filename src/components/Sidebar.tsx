@@ -1,7 +1,8 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { LayoutDashboard, ArrowLeftRight, PieChart, Target, Settings, Wallet } from "lucide-react";
+import { LayoutDashboard, ArrowLeftRight, PieChart, Target, Settings, CreditCard } from "lucide-react";
 import { useStore } from "@/store/app-store";
 import { getDict } from "@/lib/i18n";
+import { Logo } from "./Logo";
 
 export function Sidebar() {
   const { lang } = useStore();
@@ -11,6 +12,7 @@ export function Sidebar() {
   const items = [
     { to: "/app", label: t.dashboard, icon: LayoutDashboard },
     { to: "/app/transactions", label: t.transactions, icon: ArrowLeftRight },
+    { to: "/app/cards", label: t.cards, icon: CreditCard },
     { to: "/app/analytics", label: t.analytics, icon: PieChart },
     { to: "/app/goals", label: t.goals, icon: Target },
     { to: "/app/settings", label: t.settings, icon: Settings },
@@ -19,9 +21,7 @@ export function Sidebar() {
   return (
     <aside className="hidden md:flex w-64 shrink-0 flex-col border-r border-border bg-card/50 backdrop-blur-xl">
       <Link to="/app" className="flex items-center gap-2.5 px-6 py-6">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary shadow-elegant">
-          <Wallet className="h-5 w-5 text-primary-foreground" />
-        </div>
+        <Logo size={40} />
         <div>
           <div className="font-display text-lg font-bold leading-none">{t.appName}</div>
           <div className="text-[10px] text-muted-foreground mt-1">{t.tagline}</div>
@@ -66,12 +66,13 @@ export function MobileNav() {
   const items = [
     { to: "/app", label: t.dashboard, icon: LayoutDashboard },
     { to: "/app/transactions", label: t.transactions, icon: ArrowLeftRight },
+    { to: "/app/cards", label: t.cards, icon: CreditCard },
     { to: "/app/analytics", label: t.analytics, icon: PieChart },
     { to: "/app/settings", label: t.settings, icon: Settings },
   ] as const;
   return (
     <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 border-t border-border bg-card/95 backdrop-blur-xl">
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-5">
         {items.map((it) => {
           const active = loc.pathname === it.to;
           const Icon = it.icon;
