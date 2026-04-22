@@ -34,12 +34,16 @@ export const Route = createRootRoute({
       { name: "author", content: "EconoMonteiro" },
       { name: "theme-color", content: "#6d28d9" },
       { property: "og:title", content: "EconoMonteiro — Smart Finance Assistant" },
-      { property: "og:description", content: "Your private, multilingual finance assistant." },
+      { property: "og:description", content: "Track expenses, manage credit cards securely, and master your money in 7 languages." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       // Security: prevent clickjacking & restrict referrer
       { httpEquiv: "X-Content-Type-Options", content: "nosniff" },
       { name: "referrer", content: "strict-origin-when-cross-origin" },
+      { name: "twitter:title", content: "EconoMonteiro — Smart Finance Assistant" },
+      { name: "twitter:description", content: "Track expenses, manage credit cards securely, and master your money in 7 languages." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fb104b44-0435-46ba-8160-3fbcb9126b3d/id-preview-f79f0067--b3ed358d-5c96-4bde-a0f1-97b42a344939.lovable.app-1776881952274.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fb104b44-0435-46ba-8160-3fbcb9126b3d/id-preview-f79f0067--b3ed358d-5c96-4bde-a0f1-97b42a344939.lovable.app-1776881952274.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
