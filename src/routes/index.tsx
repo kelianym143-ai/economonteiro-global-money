@@ -24,9 +24,7 @@ function Landing() {
     <div className="min-h-screen bg-background overflow-hidden">
       <header className="relative z-10 flex items-center justify-between px-6 md:px-12 py-5">
         <div className="flex items-center gap-2.5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-primary shadow-elegant">
-            <Wallet className="h-5 w-5 text-primary-foreground" />
-          </div>
+          <Logo size={40} />
           <span className="font-display text-xl font-bold">{t.appName}</span>
         </div>
         <div className="flex items-center gap-2">
