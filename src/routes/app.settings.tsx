@@ -3,7 +3,7 @@ import { Topbar } from "@/components/Topbar";
 import { store, useStore } from "@/store/app-store";
 import { getDict, LANGS, type Lang } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, ShieldCheck, Eye, EyeOff } from "lucide-react";
 
 export const Route = createFileRoute("/app/settings")({
   component: Page,
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/app/settings")({
 });
 
 function Page() {
-  const { lang, theme } = useStore();
+  const { lang, theme, privacyMode } = useStore();
   const t = getDict(lang);
   return (
     <>
