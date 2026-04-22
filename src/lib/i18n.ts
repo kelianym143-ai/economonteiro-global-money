@@ -51,6 +51,27 @@ type Dict = {
   salary: string;
   other: string;
   vsLastMonth: string;
+  cards: string;
+  myCards: string;
+  addCard: string;
+  cardNickname: string;
+  cardHolder: string;
+  cardNumber: string;
+  creditLimit: string;
+  closingDay: string;
+  dueDay: string;
+  available: string;
+  used: string;
+  invalidCard: string;
+  noCards: string;
+  cardsDescription: string;
+  privacyMode: string;
+  privacyModeDesc: string;
+  securityNote: string;
+  linkedCard: string;
+  none: string;
+  delete: string;
+  confirmDelete: string;
 };
 
 const dicts: Record<Lang, Dict> = {
