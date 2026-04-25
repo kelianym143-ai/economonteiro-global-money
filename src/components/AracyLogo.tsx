@@ -25,19 +25,22 @@ export function AracyLogo({ size = 40, className }: { size?: number; className?:
       {/* Background circle */}
       <circle cx="50" cy="50" r="45" fill="url(#aracyGradient)" />
 
-      {/* Chat bubble shape */}
+      {/* Chat bubble with AI elements */}
       <path
         d="M25 35 Q25 25 35 25 L65 25 Q75 25 75 35 L75 55 Q75 65 65 65 L55 65 L50 75 L45 65 L35 65 Q25 65 25 55 Z"
         fill="white"
         opacity="0.9"
       />
 
-      {/* AI brain/sparkle */}
+      {/* AI brain/sparkle pattern */}
       <g transform="translate(40, 35)">
         <circle cx="5" cy="5" r="2" fill="url(#aracyAccent)" />
         <circle cx="15" cy="5" r="1.5" fill="url(#aracyAccent)" opacity="0.8" />
         <circle cx="10" cy="15" r="1.5" fill="url(#aracyAccent)" opacity="0.6" />
-        <path d="M5 5 L8 2 M5 5 L2 8 M15 5 L12 8 M15 5 L18 2 M10 15 L8 18 M10 15 L12 18" stroke="url(#aracyAccent)" strokeWidth="0.5" opacity="0.7" />
+        <circle cx="5" cy="10" r="1" fill="url(#aracyAccent)" opacity="0.7" />
+        <circle cx="15" cy="10" r="1" fill="url(#aracyAccent)" opacity="0.5" />
+        {/* Neural network lines */}
+        <path d="M5 5 L8 8 M5 5 L2 8 M15 5 L12 8 M15 5 L18 2 M10 15 L8 18 M10 15 L12 18" stroke="url(#aracyAccent)" strokeWidth="0.5" opacity="0.6" />
       </g>
 
       {/* Letter A stylized */}
