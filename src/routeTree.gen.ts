@@ -16,6 +16,7 @@ import { Route as AppTransactionsRouteImport } from './routes/app.transactions'
 import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppGoalsRouteImport } from './routes/app.goals'
 import { Route as AppCardsRouteImport } from './routes/app.cards'
+import { Route as AppAracyRouteImport } from './routes/app.aracy'
 import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
 
 const AppRoute = AppRouteImport.update({
@@ -53,6 +54,11 @@ const AppCardsRoute = AppCardsRouteImport.update({
   path: '/cards',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAracyRoute = AppAracyRouteImport.update({
+  id: '/aracy',
+  path: '/aracy',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
   id: '/analytics',
   path: '/analytics',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/aracy': typeof AppAracyRoute
   '/app/cards': typeof AppCardsRoute
   '/app/goals': typeof AppGoalsRoute
   '/app/settings': typeof AppSettingsRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/aracy': typeof AppAracyRoute
   '/app/cards': typeof AppCardsRoute
   '/app/goals': typeof AppGoalsRoute
   '/app/settings': typeof AppSettingsRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/aracy': typeof AppAracyRoute
   '/app/cards': typeof AppCardsRoute
   '/app/goals': typeof AppGoalsRoute
   '/app/settings': typeof AppSettingsRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/app/analytics'
+    | '/app/aracy'
     | '/app/cards'
     | '/app/goals'
     | '/app/settings'
@@ -104,6 +114,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/app/analytics'
+    | '/app/aracy'
     | '/app/cards'
     | '/app/goals'
     | '/app/settings'
@@ -114,6 +125,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/app/analytics'
+    | '/app/aracy'
     | '/app/cards'
     | '/app/goals'
     | '/app/settings'
@@ -177,6 +189,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCardsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/aracy': {
+      id: '/app/aracy'
+      path: '/aracy'
+      fullPath: '/app/aracy'
+      preLoaderRoute: typeof AppAracyRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/analytics': {
       id: '/app/analytics'
       path: '/analytics'
@@ -189,6 +208,7 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppAnalyticsRoute: typeof AppAnalyticsRoute
+  AppAracyRoute: typeof AppAracyRoute
   AppCardsRoute: typeof AppCardsRoute
   AppGoalsRoute: typeof AppGoalsRoute
   AppSettingsRoute: typeof AppSettingsRoute
@@ -198,6 +218,7 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppAnalyticsRoute: AppAnalyticsRoute,
+  AppAracyRoute: AppAracyRoute,
   AppCardsRoute: AppCardsRoute,
   AppGoalsRoute: AppGoalsRoute,
   AppSettingsRoute: AppSettingsRoute,
@@ -214,3 +235,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

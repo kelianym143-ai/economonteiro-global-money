@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { LayoutDashboard, ArrowLeftRight, PieChart, Target, Settings, CreditCard } from "lucide-react";
+import { LayoutDashboard, ArrowLeftRight, PieChart, Target, Settings, CreditCard, MessageCircle } from "lucide-react";
 import { useStore } from "@/store/app-store";
 import { getDict } from "@/lib/i18n";
 import { Logo } from "./Logo";
@@ -15,6 +15,7 @@ export function Sidebar() {
     { to: "/app/cards", label: t.cards, icon: CreditCard },
     { to: "/app/analytics", label: t.analytics, icon: PieChart },
     { to: "/app/goals", label: t.goals, icon: Target },
+    { to: "/app/aracy", label: "Aracy AI", icon: MessageCircle },
     { to: "/app/settings", label: t.settings, icon: Settings },
   ] as const;
 
@@ -68,11 +69,12 @@ export function MobileNav() {
     { to: "/app/transactions", label: t.transactions, icon: ArrowLeftRight },
     { to: "/app/cards", label: t.cards, icon: CreditCard },
     { to: "/app/analytics", label: t.analytics, icon: PieChart },
+    { to: "/app/aracy", label: "Aracy", icon: MessageCircle },
     { to: "/app/settings", label: t.settings, icon: Settings },
   ] as const;
   return (
     <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 border-t border-border bg-card/95 backdrop-blur-xl">
-      <div className="grid grid-cols-5">
+      <div className="grid grid-cols-6">
         {items.map((it) => {
           const active = loc.pathname === it.to;
           const Icon = it.icon;

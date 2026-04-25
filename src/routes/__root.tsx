@@ -1,6 +1,8 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
+import { registerServiceWorker } from "../serviceWorkerRegistration";
 
 function NotFoundComponent() {
   return (
@@ -44,9 +46,12 @@ export const Route = createRootRoute({
       { name: "twitter:description", content: "Track expenses, manage credit cards securely, and master your money in 7 languages." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fb104b44-0435-46ba-8160-3fbcb9126b3d/id-preview-f79f0067--b3ed358d-5c96-4bde-a0f1-97b42a344939.lovable.app-1776881952274.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fb104b44-0435-46ba-8160-3fbcb9126b3d/id-preview-f79f0067--b3ed358d-5c96-4bde-a0f1-97b42a344939.lovable.app-1776881952274.png" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "default" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "icon", type: "image/png", href: "/logo.png" },
       { rel: "apple-touch-icon", href: "/logo.png" },
     ],
@@ -71,5 +76,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  useEffect(() => {
+    registerServiceWorker();
+  }, []);
+
   return <Outlet />;
 }
