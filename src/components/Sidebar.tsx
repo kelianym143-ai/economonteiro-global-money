@@ -50,12 +50,6 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="m-3 rounded-2xl bg-gradient-mesh p-4 border border-border">
-        <div className="text-xs font-semibold mb-1">💎 Pro</div>
-        <div className="text-[11px] text-muted-foreground leading-snug">
-          Desbloqueie análises com IA e relatórios ilimitados.
-        </div>
-      </div>
     </aside>
   );
 }
