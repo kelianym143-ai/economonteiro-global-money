@@ -5,7 +5,6 @@
 - [x] PWA manifest configurado
 - [x] Service worker implementado
 - [x] Ícones PWA (192x192, 512x512)
-- [x] IA Aracy integrada
 - [x] Headers de segurança configurados
 
 ## 🚀 Deploy Steps
@@ -41,7 +40,6 @@ wrangler pages deploy dist
 - [ ] App carrega corretamente
 - [ ] PWA instala no mobile
 - [ ] Service worker registra
-- [ ] IA Aracy funciona
 - [ ] Offline funciona
 - [ ] HTTPS ativo
 
