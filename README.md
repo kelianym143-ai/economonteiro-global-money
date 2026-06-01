@@ -1,6 +1,6 @@
 # EconoMonteiro — Smart Finance Assistant
 
-Um assistente financeiro inteligente e privado que ajuda você a controlar suas finanças pessoais em 7 idiomas.
+Um assistente financeiro privado que ajuda você a controlar suas finanças pessoais em 7 idiomas.
 
 ## ✨ Funcionalidades
 
@@ -8,7 +8,6 @@ Um assistente financeiro inteligente e privado que ajuda você a controlar suas 
 - 💳 **Gerenciamento de cartões** com limites e uso seguro
 - 📈 **Analytics avançados** com gráficos de gastos por categoria
 - 🎯 **Metas de economia** com acompanhamento visual
-- 🤖 **Aracy AI** - Assistente sem censura para qualquer pergunta
 - 🌍 **7 idiomas** - PT, EN, ES, FR, DE, IT, JA
 - 🌓 **Tema claro/escuro**
 - 🔒 **Privacidade total** - Dados ficam no seu dispositivo
@@ -81,10 +80,6 @@ npm run lint
 - **Fast**: Carregamento instantâneo
 - **Secure**: HTTPS obrigatório
 
-## 🤖 Aracy AI
-
-A Aracy é uma assistente de IA integrada que responde qualquer pergunta sem censura. Acesse via a sidebar do app.
-
 ## 🔐 Segurança
 
 - Dados armazenados localmente (localStorage)
@@ -108,4 +103,4 @@ Este projeto é open source e gratuito para uso pessoal.
 
 ---
 
-**EconoMonteiro** - Domine seu dinheiro com inteligência artificial! 💰🤖
+**EconoMonteiro** - Domine seu dinheiro! 💰
