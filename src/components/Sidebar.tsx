@@ -15,7 +15,6 @@ export function Sidebar() {
     { to: "/app/cards", label: t.cards, icon: CreditCard },
     { to: "/app/analytics", label: t.analytics, icon: PieChart },
     { to: "/app/goals", label: t.goals, icon: Target },
-    { to: "/app/aracy", label: "Aracy AI", icon: MessageCircle },
     { to: "/app/settings", label: t.settings, icon: Settings },
   ] as const;
 
@@ -63,7 +62,6 @@ export function MobileNav() {
     { to: "/app/transactions", label: t.transactions, icon: ArrowLeftRight },
     { to: "/app/cards", label: t.cards, icon: CreditCard },
     { to: "/app/analytics", label: t.analytics, icon: PieChart },
-    { to: "/app/aracy", label: "Aracy", icon: MessageCircle },
     { to: "/app/settings", label: t.settings, icon: Settings },
   ] as const;
   return (
