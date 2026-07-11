@@ -5,7 +5,6 @@
 - [x] PWA manifest configurado
 - [x] Service worker implementado
 - [x] Ícones PWA (192x192, 512x512)
-
 ## 🚀 Deploy Steps
 
 ### 1. Cloudflare Setup
@@ -43,7 +42,6 @@ wrangler pages deploy dist
 - [ ] HTTPS ativo
 ## 📊 URLs de Exemplo
 - Produção: https://economonteiro-global-money.pages.dev
-- Preview: https://preview--economonteiro-global-money.pages.dev
 
 ## 🐛 Troubleshooting
 - Se PWA não instalar: Verificar manifest.json
