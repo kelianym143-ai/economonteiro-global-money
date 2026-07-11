@@ -6,7 +6,6 @@
 - [x] Service worker implementado
 - [x] Ícones PWA (192x192, 512x512)
 ## 🚀 Deploy Steps
-
 ### 1. Cloudflare Setup
 ```bash
 # Instalar Wrangler
@@ -42,7 +41,6 @@ wrangler pages deploy dist
 - [ ] HTTPS ativo
 ## 📊 URLs de Exemplo
 - Produção: https://economonteiro-global-money.pages.dev
-
 ## 🐛 Troubleshooting
 - Se PWA não instalar: Verificar manifest.json
 - Se offline não funcionar: Verificar service worker
