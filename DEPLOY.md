@@ -8,6 +8,7 @@
 ## 🚀 Deploy Steps
 
 ### 1. Cloudflare Setup
+
 ```bash
 # Instalar Wrangler
 npm install -g wrangler
@@ -38,6 +39,7 @@ wrangler pages deploy dist
 - [ ] App carrega corretamente
 - [ ] PWA instala no mobile
 - [ ] Service worker registra
+
 - [ ] Offline funciona
 - [ ] HTTPS ativo
 ## 📊 URLs de Exemplo
