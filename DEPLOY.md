@@ -5,7 +5,6 @@
 - [x] PWA manifest configurado
 - [x] Service worker implementado
 - [x] Ícones PWA (192x192, 512x512)
-- [x] Headers de segurança configurados
 
 ## 🚀 Deploy Steps
 
@@ -42,7 +41,6 @@ wrangler pages deploy dist
 - [ ] Service worker registra
 - [ ] Offline funciona
 - [ ] HTTPS ativo
-
 ## 📊 URLs de Exemplo
 - Produção: https://economonteiro-global-money.pages.dev
 - Preview: https://preview--economonteiro-global-money.pages.dev
