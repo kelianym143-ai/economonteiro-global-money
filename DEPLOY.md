@@ -2,11 +2,13 @@
 
 ## ✅ Pré-deploy
 - [x] Build de produção funcionando
+
 - [x] PWA manifest configurado
 - [x] Service worker implementado
 - [x] Ícones PWA (192x192, 512x512)
 
 ## 🚀 Deploy Steps
+
 
 ### 1. Cloudflare Setup
 
