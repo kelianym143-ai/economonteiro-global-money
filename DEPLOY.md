@@ -9,8 +9,10 @@
 
 ### 1. Cloudflare Setup
 ```bash
+
 # Instalar Wrangler
 npm install -g wrangler
+
 
 # Login
 wrangler auth login
