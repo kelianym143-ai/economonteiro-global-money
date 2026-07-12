@@ -1,4 +1,3 @@
-
 # EconoMonteiro Deploy Checklist
 ## ✅ Pré-deploy
 - [x] Build de produção funcionando
@@ -8,10 +7,8 @@
 
 ## 🚀 Deploy Steps
 
-
 ### 1. Cloudflare Setup
 ```bash
-
 # Instalar Wrangler
 npm install -g wrangler
 
