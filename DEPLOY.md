@@ -11,7 +11,6 @@
 ```bash
 # Instalar Wrangler
 npm install -g wrangler
-
 # Login
 wrangler auth login
 
